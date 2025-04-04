@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUMU-SHOP - Mode & Perruques</title>
+    <style>
+        :root {
+            --primary: #ff6b98;
+            --secondary: #6b5fff;
+            --dark: #2a2a2a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+            color: var(--secondary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a i {
+            margin-right: 5px;
+            font-size: 16px;
+        }
+        
+        .auth-buttons .btn {
+            margin-left: 15px;
+        }
+        
+        .cart-count {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #ff4785;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a4eff;
+        }
+        
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-wishlist {
+            background-color: #f8f9fa;
+            color: #555;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        
+        .btn-wishlist:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Sections */
+        .categories, .products, .features, .testimonials {
+            margin-bottom: 70px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Category & Product Cards */
+        .category-grid, .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card, .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .category-card:hover, .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .sale-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .new-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .category-img, .product-img {
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        
+        .category-info, .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .category-info h3, .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #444;
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .current-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-right: 10px;
+        }
+        
+        .old-price {
+            font-weight: 500;
+            color: var(--gray);
+            font-size: 1rem;
+            text-decoration: line-through;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: #fff;
+            padding: 60px 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: var(--light);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .testimonial-author h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-author p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .testimonial-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #ddd;
+            background-color: #333;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 0.9rem;
+        }
+        
+        .newsletter-form button {
+            border-radius: 0 30px 30px 0;
+            padding: 0 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.5rem;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        /* Auth Forms */
+        .auth-form {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .form-footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        /* Cart Styles */
+        .cart-empty {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .cart-empty i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .cart-empty p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #444;
+        }
+        
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            background-color: #f5f5f5;
+            border: none;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            height: 30px;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            margin-left: auto;
+            align-self: flex-start;
+        }
+        
+        .modal-footer {
+            padding: 20px;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .cart-total span {
+            color: var(--primary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .nav-container {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 400px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .btn-sm {
+                width: 100%;
+            }
+            
+            .btn-wishlist {
+                width: 100%;
+                border-radius: 30px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                height: 350px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-star"></i>MUMU-<span>SHOP</span>
+                </a>
+                
+                <div class="nav-container">
+                    <nav>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-home"></i> Accueil</a></li>
+                            <li><a href="#"><i class="fas fa-tshirt"></i> Vêtements</a></li>
+                            <li><a href="#"><i class="fas fa-user-tie"></i> Perruques</a></li>
+                            <li><a href="#"><i class="fas fa-newspaper"></i> Nouveautés</a></li>
+                            <li>
+                                <a href="#" id="cart-btn"><i class="fas fa-shopping-cart"></i> Panier</a>
+                                <span class="cart-count">0</span>
+                            </li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="auth-buttons">
+                        <button class="btn btn-sm btn-secondary" id="login-btn">Connexion</button>
+                        <button class="btn btn-sm" id="register-btn">Inscription</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Collection Exclusive MUMU-SHOP</h1>
+            <p>Découvrez nos vêtements tendance et perruques de qualité pour toutes les occasions</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn">Découvrir</a>
+                <a href="#" class="btn btn-outline">Voir la vidéo</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Catégories</h2>
+            </div>
+            <div class="category-grid" id="categories-container">
+                <!-- Catégories chargées dynamiquement -->
+            </div>
+        </div>
+    </section>
+    
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Produits Populaires</h2>
+            </div>
+            <div class="product-grid" id="products-container">
+                <!-- Produits chargés dynamiquement -->
+            </div>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pourquoi Choisir MUMU-SHOP ?</h2>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Livraison Rapide</h3>
+                    <p>Livraison express en 24-48h partout en France avec suivi en temps réel.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Retours Faciles</h3>
+                    <p>30 jours pour changer d'avis, retours gratuits et sans frais cachés.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Paiement Sécurisé</h3>
+                    <p>Paiement 100% sécurisé avec cryptage SSL et multiples moyens de paiement.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Service Client</h3>
+                    <p>Une équipe disponible 7j/7 pour répondre à toutes vos questions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Témoignages Clients</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Client" class="testimonial-img">
+                        <div class="testimonial-author">
+                            <h4>Sophie Martin</h4>
+                            <p>Paris</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Les perruques de MUMU-SHOP sont d'une qualité exceptionnelle. Je recommande vivement!"</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="testimonial-img">
+                        <div class="testimonial-author">
+                            <h4>Thomas Leroy</h4>
+                            <p>Lyon</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Service client au top et livraison ultra rapide. Mon costume est parfait!"</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="testimonial-img">
+                        <div class="testimonial-author">
+                            <h4>Amélie Dubois</h4>
+                            <p>Marseille</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"J'ai trouvé exactement ce que je cherchais. La robe est encore plus belle en vrai!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>À Propos</h3>
+                    <p>MUMU-SHOP est une boutique en ligne spécialisée dans la mode et les perruques de qualité depuis 2018.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Liens Utiles</h3>
+                    <ul>
+                        <li><a href="#">Mon compte</a></li>
+                        <li><a href="#">Suivi de commande</a></li>
+                        <li><a href="#">Liste de souhaits</a></li>
+                        <li><a href="#">Guide des tailles</a></li>
+                        <li><a href="#">Blog Mode</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Service Client</h3>
+                    <ul>
+                        <li><a href="#">Contactez-nous</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Livraison</a></li>
+                        <li><a href="#">Retours & Échanges</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Abonnez-vous pour recevoir nos offres exclusives et nouveautés.</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 MUMU-SHOP. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Modal Panier -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Votre Panier</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="cart-items">
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Votre panier est vide</p>
+                    <a href="#" class="btn">Continuer vos achats</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total">
+                    Total: <span id="cart-total-price">0,00€</span>
+                </div>
+                <button class="btn" id="checkout-btn">Passer la commande</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Connexion -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Connexion</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="auth-form" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Mot de passe</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn">Se connecter</button>
+                    <div class="form-footer">
+                        <p>Pas encore de compte? <a href="#" id="show-register">S'inscrire</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Inscription -->
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Inscription</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="auth-form" id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">Nom complet</label>
+                        <input type="text" id="register-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Mot de passe</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm">Confirmer le mot de passe</label>
+                        <input type="password" id="register-confirm" required>
+                    </div>
+                    <button type="submit" class="btn">S'inscrire</button>
+                    <div class="form-footer">
+                        <p>Déjà un compte? <a href="#" id="show-login">Se connecter</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Données simulées pour le backend
+        const backend = {
+            categories: [
+                { id: 1, name: "Vêtements Femmes", image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" },
+                { id: 2, name: "Vêtements Hommes", image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" },
+                { id: 3, name: "Perruques Naturelles", image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" },
+                { id: 4, name: "Perruques Fantaisie", image: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" }
+            ],
+            
+            products: [
+                { 
+                    id: 1, 
+                    name: "Costume Classique Noir", 
+                    price: 129.99, 
+                    oldPrice: 185.99, 
+                    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                    category: 2,
+                    isNew: true
+                },
+                { 
+                    id: 2, 
+                    name: "Robe de Soirée Élégante", 
+                    price: 89.99, 
+                    image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                    category: 1,
+                    isNew: false
+                },
+                { 
+                    id: 3, 
+                    name: "Perruque Blonde Naturelle", 
+                    price: 159.99, 
+                    oldPrice: 199.99, 
+                    image: "https://images.unsplash.com/photo-1597256201129-1a0c67a8a9dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                    category: 3,
+                    isNew: true
+                },
+                { 
+                    id: 4, 
+                    name: "Perruque Fantaisie Arc-en-Ciel", 
+                    price: 79.99, 
+                    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                    category: 4,
+                    isNew: false
+                },
+                { 
+                    id: 5, 
+                    name: "Ensemble Tailleur Femme", 
+                    price: 109.99, 
+                    oldPrice: 149.99, 
+                    image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                    category: 1,
+                    isNew: false
+                },
+                { 
+                    id: 6, 
+                    name: "Perruque Noire Longue", 
+                    price: 139.99, 
+                    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                    category: 3,
+                    isNew: true
+                }
+            ],
+            
+            users: [],
+            
+            currentUser: null,
+            
+            // Méthodes pour simuler un backend
+            registerUser: function(userData) {
+                const userExists = this.users.some(user => user.email === userData.email);
+                if (userExists) {
+                    return { success: false, message: "Un compte existe déjà avec cet email" };
+                }
+                
+                if (userData.password !== userData.confirmPassword) {
+                    return { success: false, message: "Les mots de passe ne correspondent pas" };
+                }
+                
+                const newUser = {
+                    id: Date.now(),
+                    name: userData.name,
+                    email: userData.email,
+                    password: userData.password,
+                    cart: []
+                };
+                
+                this.users.push(newUser);
+                this.currentUser = newUser;
+                return { success: true, user: newUser };
+            },
+            
+            loginUser: function(email, password) {
+                const user = this.users.find(user => user.email === email && user.password === password);
+                if (user) {
+                    this.currentUser = user;
+                    return { success: true, user };
+                }
+                return { success: false, message: "Email ou mot de passe incorrect" };
+            },
+            
+            logoutUser: function() {
+                this.currentUser = null;
+            },
+            
+            addToCart: function(userId, productId, quantity = 1) {
+                const user = this.users.find(user => user.id === userId);
+                if (!user) return false;
+                
+                const existingItem = user.cart.find(item => item.productId === productId);
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    const product = this.products.find(p => p.id === productId);
+                    if (!product) return false;
+                    
+                    user.cart.push({
+                        productId,
+                        quantity,
+                        price: product.price,
+                        name: product.name,
+                        image: product.image
+                    });
+                }
+                
+                return true;
+            },
+            
+            updateCartItem: function(userId, productId, quantity) {
+                const user = this.users.find(user => user.id === userId);
+                if (!user) return false;
+                
+                const item = user.cart.find(item => item.productId === productId);
+                if (!item) return false;
+                
+                if (quantity <= 0) {
+                    user.cart = user.cart.filter(item => item.productId !== productId);
+                } else {
+                    item.quantity = quantity;
+                }
+                
+                return true;
+            },
+            
+            removeFromCart: function(userId, productId) {
+                const user = this.users.find(user => user.id === userId);
+                if (!user) return false;
+                
+                user.cart = user.cart.filter(item => item.productId !== productId);
+                return true;
+            },
+            
+            getCart: function(userId) {
+                const user = this.users.find(user => user.id === userId);
+                return user ? user.cart : [];
+            },
+            
+            getCartTotal: function(userId) {
+                const cart = this.getCart(userId);
+                return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            }
+        };
+        
+        // Gestion de l'interface utilisateur
+        const UI = {
+            // Initialisation
+            init: function() {
+                this.renderCategories();
+                this.renderProducts();
+                this.setupEventListeners();
+                
+                // Vérifier si un utilisateur est connecté (simulation)
+                if (backend.currentUser) {
+                    this.updateAuthUI();
+                }
+            },
+            
+            // Rendu des catégories
+            renderCategories: function() {
+                const container = document.getElementById('categories-container');
+                container.innerHTML = '';
+                
+                backend.categories.forEach(category => {
+                    const categoryElement = document.createElement('div');
+                    categoryElement.className = 'category-card';
+                    categoryElement.innerHTML = `
+                        <img src="${category.image}" alt="${category.name}" class="category-img">
+                        <div class="category-info">
+                            <h3>${category.name}</h3>
+                            <a href="#" class="btn btn-sm" data-category-id="${category.id}">Voir plus</a>
+                        </div>
+                    `;
+                    container.appendChild(categoryElement);
+                });
+            },
+            
+            // Rendu des produits
+            renderProducts: function(filterCategoryId = null) {
+                const container = document.getElementById('products-container');
+                container.innerHTML = '';
+                
+                let productsToDisplay = backend.products;
+                if (filterCategoryId) {
+                    productsToDisplay = productsToDisplay.filter(product => product.category === filterCategoryId);
+                }
+                
+                productsToDisplay.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.className = 'product-card';
+                    
+                    let badges = '';
+                    if (product.oldPrice) {
+                        badges += `<div class="sale-badge">-${Math.round((1 - product.price / product.oldPrice) * 100)}%</div>`;
+                    }
+                    if (product.isNew) {
+                        badges += `<div class="new-badge">Nouveau</div>`;
+                    }
+                    
+                    productElement.innerHTML = `
+                        ${badges}
+                        <img src="${product.image}" alt="${product.name}" class="product-img">
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <div class="product-price">
+                                <span class="current-price">${product.price.toFixed(2)}€</span>
+                                ${product.oldPrice ? `<span class="old-price">${product.oldPrice.toFixed(2)}€</span>` : ''}
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-sm add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}">Ajouter</button>
+                                <button class="btn btn-sm btn-wishlist"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(productElement);
+                });
+            },
+            
+            // Mise à jour de l'interface d'authentification
+            updateAuthUI: function() {
+                const authButtons = document.querySelector('.auth-buttons');
+                if (backend.currentUser) {
+                    authButtons.innerHTML = `
+                        <span style="margin-right: 15px; color: var(--dark);">Bonjour, ${backend.currentUser.name.split(' ')[0]}</span>
+                        <button class="btn btn-sm" id="logout-btn">Déconnexion</button>
+                    `;
+                } else {
+                    authButtons.innerHTML = `
+                        <button class="btn btn-sm btn-secondary" id="login-btn">Connexion</button>
+                        <button class="btn btn-sm" id="register-btn">Inscription</button>
+                    `;
+                }
+            },
+            
+            // Mise à jour du panier
+            updateCart: function() {
+                const cartCount = document.querySelector('.cart-count');
+                let totalItems = 0;
+                
+                if (backend.currentUser) {
+                    totalItems = backend.getCart(backend.currentUser.id).reduce((total, item) => total + item.quantity, 0);
+                }
+                
+                cartCount.textContent = totalItems;
+                
+                // Mise à jour du modal du panier
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartTotalPrice = document.getElementById('cart-total-price');
+                
+                if (totalItems === 0) {
+                    cartItemsContainer.innerHTML = `
+                        <div class="cart-empty">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p>Votre panier est vide</p>
+                            <a href="#" class="btn">Continuer vos achats</a>
+                        </div>
+                    `;
+                    cartTotalPrice.textContent = '0,00€';
+                } else {
+                    cartItemsContainer.innerHTML = '';
+                    const cart = backend.getCart(backend.currentUser.id);
+                    
+                    cart.forEach(item => {
+                        const cartItemElement = document.createElement('div');
+                        cartItemElement.className = 'cart-item';
+                        cartItemElement.innerHTML = `
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <h4 class="cart-item-title">${item.name}</h4>
+                                <div class="cart-item-price">${item.price.toFixed(2)}€</div>
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn minus" data-id="${item.productId}">-</button>
+                                    <input type="number" value="${item.quantity}" min="1" class="quantity-input" data-id="${item.productId}">
+                                    <button class="quantity-btn plus" data-id="${item.productId}">+</button>
+                                </div>
+                            </div>
+                            <button class="remove-item" data-id="${item.productId}"><i class="fas fa-trash"></i></button>
+                        `;
+                        cartItemsContainer.appendChild(cartItemElement);
+                    });
+                    
+                    cartTotalPrice.textContent = backend.getCartTotal(backend.currentUser.id).toFixed(2) + '€';
+                }
+            },
+            
+            // Configuration des écouteurs d'événements
+            setupEventListeners: function() {
+                // Panier
+                document.getElementById('cart-btn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (!backend.currentUser) {
+                        this.showModal('login-modal');
+                        return;
+                    }
+                    this.showModal('cart-modal');
+                });
+                
+                // Connexion/Inscription
+                document.addEventListener('click', (e) => {
+                    if (e.target.id === 'login-btn' || e.target.closest('#login-btn')) {
+                        e.preventDefault();
+                        this.showModal('login-modal');
+                    } else if (e.target.id === 'register-btn' || e.target.closest('#register-btn')) {
+                        e.preventDefault();
+                        this.showModal('register-modal');
+                    } else if (e.target.id === 'logout-btn' || e.target.closest('#logout-btn')) {
+                        e.preventDefault();
+                        backend.logoutUser();
+                        this.updateAuthUI();
+                        this.updateCart();
+                    } else if (e.target.id === 'show-register' || e.target.closest('#show-register')) {
+                        e.preventDefault();
+                        this.hideModal('login-modal');
+                        this.showModal('register-modal');
+                    } else if (e.target.id === 'show-login' || e.target.closest('#show-login')) {
+                        e.preventDefault();
+                        this.hideModal('register-modal');
+                        this.showModal('login-modal');
+                    }
+                });
+                
+                // Fermer les modals
+                document.querySelectorAll('.close-modal').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const modal = btn.closest('.modal');
+                        this.hideModal(modal.id);
+                    });
+                });
+                
+                // Clic à l'extérieur des modals
+                window.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('modal')) {
+                        this.hideModal(e.target.id);
+                    }
+                });
+                
+                // Formulaire d'inscription
+                document.getElementById('register-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('register-name').value;
+                    const email = document.getElementById('register-email').value;
+                    const password = document.getElementById('register-password').value;
+                    const confirmPassword = document.getElementById('register-confirm').value;
+                    
+                    const result = backend.registerUser({
+                        name,
+                        email,
+                        password,
+                        confirmPassword
+                    });
+                    
+                    if (result.success) {
+                        alert('Inscription réussie ! Bienvenue chez MUMU-SHOP');
+                        this.hideModal('register-modal');
+                        this.updateAuthUI();
+                        this.updateCart();
+                    } else {
+                        alert(result.message);
+                    }
+                });
+                
+                // Formulaire de connexion
+                document.getElementById('login-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('login-email').value;
+                    const password = document.getElementById('login-password').value;
+                    
+                    const result = backend.loginUser(email, password);
+                    
+                    if (result.success) {
+                        this.hideModal('login-modal');
+                        this.updateAuthUI();
+                        this.updateCart();
+                    } else {
+                        alert(result.message);
+                    }
+                });
+                
+                // Newsletter
+                document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const emailInput = e.target.querySelector('input[type="email"]');
+                    alert(`Merci pour votre inscription à notre newsletter (${emailInput.value}) !`);
+                    emailInput.value = '';
+                });
+                
+                // Ajout au panier
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+                        const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+                        
+                        if (!backend.currentUser) {
+                            this.showModal('login-modal');
+                            return;
+                        }
+                        
+                        const id = parseInt(button.getAttribute('data-id'));
+                        const name = button.getAttribute('data-name');
+                        const price = parseFloat(button.getAttribute('data-price'));
+                        const image = button.getAttribute('data-image');
+                        
+                        backend.addToCart(backend.currentUser.id, id);
+                        this.updateCart();
+                        
+                        // Animation de confirmation
+                        button.textContent = 'Ajouté !';
+                        button.style.backgroundColor = 'var(--success)';
+                        setTimeout(() => {
+                            button.textContent = 'Ajouter';
+                            button.style.backgroundColor = 'var(--primary)';
+                        }, 1000);
+                    }
+                });
+                
+                // Gestion du panier dans le modal
+                document.getElementById('cart-items').addEventListener('click', (e) => {
+                    if (!backend.currentUser) return;
+                    
+                    if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                        const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
+                        const productId = parseInt(button.getAttribute('data-id'));
+                        
+                        backend.removeFromCart(backend.currentUser.id, productId);
+                        this.updateCart();
+                    } else if (e.target.classList.contains('minus') || e.target.closest('.minus')) {
+                        const button = e.target.classList.contains('minus') ? e.target : e.target.closest('.minus');
+                        const productId = parseInt(button.getAttribute('data-id'));
+                        
+                        const item = backend.getCart(backend.currentUser.id).find(item => item.productId === productId);
+                        if (item && item.quantity > 1) {
+                            backend.updateCartItem(backend.currentUser.id, productId, item.quantity - 1);
+                            this.updateCart();
+                        }
+                    } else if (e.target.classList.contains('plus') || e.target.closest('.plus')) {
+                        const button = e.target.classList.contains('plus') ? e.target : e.target.closest('.plus');
+                        const productId = parseInt(button.getAttribute('data-id'));
+                        
+                        const item = backend.getCart(backend.currentUser.id).find(item => item.productId === productId);
+                        if (item) {
+                            backend.updateCartItem(backend.currentUser.id, productId, item.quantity + 1);
+                            this.updateCart();
+                        }
+                    }
+                });
+                
+                // Changement de quantité via l'input
+                document.getElementById('cart-items').addEventListener('change', (e) => {
+                    if (e.target.classList.contains('quantity-input')) {
+                        const input = e.target;
+                        const productId = parseInt(input.getAttribute('data-id'));
+                        const quantity = parseInt(input.value);
+                        
+                        if (quantity > 0) {
+                            backend.updateCartItem(backend.currentUser.id, productId, quantity);
+                            this.updateCart();
+                        }
+                    }
+                });
+                
+                // Passer la commande
+                document.getElementById('checkout-btn').addEventListener('click', () => {
+                    if (!backend.currentUser) return;
+                    
+                    const cart = backend.getCart(backend.currentUser.id);
+                    if (cart.length === 0) {
+                        alert('Votre panier est vide !');
+                        return;
+                    }
+                    
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    const totalPrice = backend.getCartTotal(backend.currentUser.id);
+                    
+                    alert(`Commande passée pour ${totalItems} articles !\nTotal: ${totalPrice.toFixed(2)}€\n\nMerci pour votre achat chez MUMU-SHOP !`);
+                    
+                    // Vider le panier après la commande
+                    backend.currentUser.cart = [];
+                    this.updateCart();
+                    this.hideModal('cart-modal');
+                });
+                
+                // Filtrage par catégorie
+                document.getElementById('categories-container').addEventListener('click', (e) => {
+                    if (e.target.tagName === 'A' || e.target.closest('a')) {
+                        const link = e.target.tagName === 'A' ? e.target : e.target.closest('a');
+                        const categoryId = link.getAttribute('data-category-id');
+                        
+                        if (categoryId) {
+                            e.preventDefault();
+                            this.renderProducts(parseInt(categoryId));
+                            
+                            // Faire défiler jusqu'aux produits
+                            document.querySelector('.products').scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            },
+            
+            // Afficher un modal
+            showModal: function(modalId) {
+                document.getElementById(modalId).style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            },
+            
+            // Cacher un modal
+            hideModal: function(modalId) {
+                document.getElementById(modalId).style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        };
+        
+        // Initialisation de l'interface utilisateur
+        document.addEventListener('DOMContentLoaded', () => UI.init());
+    </script>
+</body>
+</html>
